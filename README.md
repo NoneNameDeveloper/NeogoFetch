@@ -10,10 +10,8 @@
 
 `go build`
 
-`export PATH="$PATH:$HOME/go/bin"`
-
 # Usage
-`neogofetch`
+`./neogofetch`
 
 # ✒️ Note
 You can change logo (ASCII) in file logo.txt
