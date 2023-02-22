@@ -8,22 +8,11 @@ import (
 	"strings"
 )
 
-// JSpaceSet Add {len_} spaces
-func JSpaceSet(len_ int) string {
-	res_ := " "
+// create splitter
+func splitter(len_ int, char string) (splitValue string) {
 
 	for i := 0; i < len_; i++ {
-		res_ += " "
-	}
-	return res_
-}
-
-// create splitter (between head and main info)
-func splitter(head string) string {
-	splitValue := ""
-
-	for i := 0; i < len(head); i++ {
-		splitValue += "-"
+		splitValue += char
 	}
 
 	return splitValue
@@ -33,7 +22,7 @@ func splitter(head string) string {
 func output() []string {
 
 	head := color.GreenString(strings.TrimSpace(info.CompareNameHost()))
-	splitter := splitter(strings.TrimSpace(info.CompareNameHost()))
+	splitter := splitter(len(strings.TrimSpace(info.CompareNameHost())), "-")
 	osName := color.GreenString("OS: ") + strings.TrimSpace(info.GetOsName())
 	machineType := color.GreenString("Type: ") + strings.TrimSpace(info.GetMachineType())
 	kernel := color.GreenString("Kernel: ") + strings.TrimSpace(info.GetKernel())
@@ -62,7 +51,7 @@ func main() {
 			fmt.Print(splitFileData[i])
 			curLen = len(splitFileData[i])
 		}
-		fmt.Println(JSpaceSet(50-curLen), info[i])
+		fmt.Println(splitter(50-curLen, " "), info[i])
 		curLen = 0
 	}
 }
